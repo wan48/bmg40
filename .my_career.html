@@ -1,234 +1,215 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미래를 그리는 전자공학도</title>
-    <!-- 웹 폰트 (Pretendard) 적용 -->
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v3.2.1/dist/web/static/pretendard.css" />
-    <style>
-        /* 전체 기본 설정 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>나의 꿈 - 전자공학도</title>
 
-        body {
-            background-color: #f8fafc;
-            color: #1e293b;
-            line-height: 1.6;
-        }
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Pretendard', sans-serif;
+    }
 
-        /* 메인 헤더 (상단 영역) */
-        header {
-            background: linear-gradient(135deg, #0ea5e9, #2563eb);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+    body{
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color:white;
+      line-height:1.6;
+    }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
+    header{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
+    header h1{
+      font-size:4rem;
+      color:#38bdf8;
+      margin-bottom:20px;
+    }
 
-        /* 버튼 스타일 */
-        button {
-            padding: 15px 35px;
-            border: none;
-            border-radius: 30px;
-            background: #ffffff;
-            color: #2563eb;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+    header p{
+      font-size:1.3rem;
+      max-width:700px;
+    }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            background: #f1f5f9;
-        }
+    section{
+      padding:80px 10%;
+    }
 
-        /* 본문 섹션 공통 스타일 */
-        section {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
+    .card-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:25px;
+      margin-top:40px;
+    }
 
-        .section-title {
-            font-size: 2rem;
-            color: #0f172a;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-        }
+    .card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      transition:0.3s;
+      box-shadow:0 0 15px rgba(0,0,0,0.3);
+    }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background: #2563eb;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
+    .card:hover{
+      transform:translateY(-10px);
+      background:#334155;
+    }
 
-        /* 관심 분야 (카드 그리드 레이아웃) */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
+    .card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid #0ea5e9;
-        }
+    .timeline{
+      margin-top:40px;
+      border-left:4px solid #38bdf8;
+      padding-left:30px;
+    }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
+    .timeline-item{
+      margin-bottom:40px;
+    }
 
-        .card h3 {
-            color: #2563eb;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
+    .timeline-item h3{
+      color:#38bdf8;
+    }
 
-        /* 학업 및 목표 (타임라인 레이아웃) */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 30px;
-            border-left: 3px solid #cbd5e1;
-        }
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#020617;
+      margin-top:50px;
+    }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-        }
+    .highlight{
+      color:#38bdf8;
+      font-weight:bold;
+    }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -39px;
-            top: 20px;
-            width: 16px;
-            height: 16px;
-            background: #2563eb;
-            border-radius: 50%;
-            border: 4px solid #f8fafc;
-        }
+    button{
+      margin-top:30px;
+      padding:15px 30px;
+      border:none;
+      border-radius:30px;
+      background:#38bdf8;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
 
-        .timeline-item h3 {
-            color: #0f172a;
-            margin-bottom: 10px;
-        }
-
-        .timeline-item .date {
-            display: inline-block;
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* 푸터 */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: #0f172a;
-            color: #94a3b8;
-            margin-top: 60px;
-        }
-    </style>
+    button:hover{
+      background:#0ea5e9;
+      transform:scale(1.05);
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>세상을 연결하는 엔지니어</h1>
-        <p>하드웨어와 소프트웨어의 융합으로 사람들의 삶을 편리하게 만드는 전자공학도를 꿈꿉니다.</p>
-        <button onclick="showResolution()">나의 다짐 보기 🚀</button>
-    </header>
+  <header>
+    <h1>전자공학도를 꿈꾸는 나</h1>
 
-    <section>
-        <h2 class="section-title">주요 관심 분야</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>💻 시스템 반도체 설계</h3>
-                <p>단순한 메모리를 넘어, 연산과 제어 기능을 수행하는 시스템 반도체(비메모리)의 구조를 이해하고 고효율 칩을 설계하는 것에 관심이 있습니다.</p>
-            </div>
-            <div class="card">
-                <h3>🤖 임베디드 시스템</h3>
-                <p>하드웨어를 직접 제어하는 소프트웨어를 개발하여, 사물인터넷(IoT) 기기나 자율주행 자동차의 두뇌 역할을 하는 시스템을 만들고 싶습니다.</p>
-            </div>
-            <div class="card">
-                <h3>⚡ 회로 이론 및 제어</h3>
-                <p>전류와 신호의 흐름을 통제하는 아날로그/디지털 회로를 설계하고, 드론이나 로봇의 모터를 정밀하게 제어하는 기술을 탐구합니다.</p>
-            </div>
-        </div>
-    </section>
+    <p>
+      저는 미래 기술을 설계하고 세상을 더 편리하게 만드는 
+      <span class="highlight">전자공학자</span>를 꿈꾸고 있습니다.
+      센서, 반도체, 드론, 인공지능 기술에 관심이 많으며
+      다양한 전자 시스템을 직접 만들고 연구하고 싶습니다.
+    </p>
 
-    <section>
-        <h2 class="section-title">학업 및 성장 계획</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="date">현재 ~ 단기 목표</span>
-                <h3>기초 역량 강화 및 미니 프로젝트</h3>
-                <p>수학과 물리 등 공학의 기초를 탄탄히 다지고, 파이썬(Python)과 C언어를 공부합니다. 아두이노를 활용해 센서로 동작하는 간단한 기기를 직접 만들어 봅니다.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="date">대학 진학 후 (중기 목표)</span>
-                <h3>전문 지식 습득 및 심화 연구</h3>
-                <p>전자공학과에 진학하여 회로망 해석, 전자기학, 마이크로프로세서 등을 깊이 있게 배웁니다. 학부 연구생이나 동아리 활동을 통해 실무적인 융합 프로젝트를 경험합니다.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="date">미래 비전 (장기 목표)</span>
-                <h3>세상을 바꾸는 핵심 엔지니어</h3>
-                <p>저전력 고효율 전자기기 시스템을 개발하여, 환경을 보호하면서도 인류의 삶을 한 단계 진보시키는 전자공학 전문가로 성장하겠습니다.</p>
-            </div>
-        </div>
-    </section>
+    <button onclick="showMessage()">나의 목표 보기</button>
+  </header>
 
-    <footer>
-        <p>2026 © 예비 전자공학도의 포트폴리오. All rights reserved.</p>
-    </footer>
+  <section>
+    <h2>내가 관심 있는 분야</h2>
 
-    <script>
-        // 버튼 클릭 시 실행되는 자바스크립트 함수
-        function showResolution() {
-            alert("작은 칩 하나로 거대한 세상을 움직이는 엔지니어가 되겠습니다! 포기하지 않고 나아가겠습니다.");
-        }
-    </script>
+    <div class="card-container">
+
+      <div class="card">
+        <h3>반도체</h3>
+        <p>
+          전류를 제어하는 핵심 부품인 반도체 기술에 관심이 있습니다.
+          미래 전자기기의 성능을 발전시키는 중요한 기술이라고 생각합니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>드론 제어</h3>
+        <p>
+          IMU 센서와 자이로 기술을 이용한 드론 호버링과
+          자세 제어 기술을 배우고 싶습니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>인공지능</h3>
+        <p>
+          AI와 전자공학을 융합하여
+          스마트 기기와 자율주행 시스템을 개발해 보고 싶습니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>센서 기술</h3>
+        <p>
+          가속도 센서, 초음파 센서 등을 활용해
+          다양한 스마트 시스템을 제작하는 것에 흥미가 있습니다.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>나의 성장 계획</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h3>고등학교</h3>
+        <p>
+          수학과 과학 기초를 탄탄히 공부하고,
+          아두이노와 마이크로비트를 활용한 프로젝트를 진행하기
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>대학교</h3>
+        <p>
+          전자공학과에 진학하여 회로 설계,
+          프로그래밍, 임베디드 시스템 등을 전문적으로 배우기
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>미래 목표</h3>
+        <p>
+          사람들의 삶을 더 편리하게 만드는
+          스마트 기술과 차세대 전자기기를 개발하는 엔지니어 되기
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>2026 © My Engineering Dream Portfolio</p>
+  </footer>
+
+  <script>
+    function showMessage(){
+      alert("끊임없이 배우고 도전하는 전자공학자가 되겠습니다!");
+    }
+  </script>
 
 </body>
 </html>
